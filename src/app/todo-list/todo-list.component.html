@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+  <div class="container">
+    <form>
+      <div class="form-group">
+        <h1 class="text-center text-primary">Todo App</h1>
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Add Todo" [(ngModel)]="newTodo" name="newTodo" autocomplete="off">
+          <button type="button" class="btn btn-primary" (click)="addTodo()">Add</button>
+        </div>
+      </div>
+    </form>
+    <ul id="todoList">
+      <li *ngFor="let todo of todoArray; let i = index">
+        {{ todo }}
+        <i class="fas fa-trash-alt" (click)="deleteTodo(i)"></i>
+      </li>
+    </ul>
+  </div>
+  
+  
+  
+  <script>
+  function addTodo() {
+    var todoText = document.querySelector("input[name='todo']").value;
+    if (todoText.trim() !== "") {
+      var listItem = document.createElement("li");
+      listItem.textContent = todoText;
+      document.getElementById("todoList").appendChild(listItem);
+      document.querySelector("input[name='todo']").value = "";
+      console.log("input[name='todo']");
+    }
+  }
+  
+
+  </script>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</body>
+
+</html>
